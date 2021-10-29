@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+{% block title %}Assign Participant Rank{% endblock title %}
+{% block breadcrumb %}Assign Participant Rank{% endblock breadcrumb %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5>Assign User Rank</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-success" href="{% url 'user-mark' %}">User Rank List</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy  }}
+                        <button class="btn btn-success ml-2" type="submit">Assign Rank</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+{% block title %}Participants Rank List{% endblock title %}
+{% block breadcrumb %}Participants Rank List{% endblock breadcrumb %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h2>Participants Rank List</h2>
+                        </div>
+                        <div class="col-md-3">
+                            <a class="btn btn-success" href="{% url 'create-user-mark' %}">Assign User Rank</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>                  
+                          <tr>
+                            <th style="width: 10px">#</th>
+                            <th>User</th>
+                            <th>Event</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for usermark in usermark %}
+                                <tr role="row">
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ usermark.user }}</td>
+                                    <td>{{ usermark.event }}</td>
+                                    <td>{{ usermark.status }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
